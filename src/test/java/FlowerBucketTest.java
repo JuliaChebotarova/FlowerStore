@@ -1,5 +1,6 @@
 
 
+import java.util.List;
 import java.util.Random;
 
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import flower.store.Flower;
 import flower.store.FlowerBucket;
+import flower.store.FlowerColor;
 import flower.store.FlowerPack;
+import flower.store.FlowerType;
 import flower.store.Rose;
 
 public class FlowerBucketTest {
@@ -32,5 +35,18 @@ public class FlowerBucketTest {
         FlowerPack flowerPack = new FlowerPack(flower, quantity);
         flowerBucket.add(flowerPack);
         Assertions.assertEquals(price * quantity, flowerBucket.getPrice());
+    }
+
+
+    @Test
+    public void testAdd() {
+        Flower flower = new Flower(FlowerColor.RED, FlowerType.TULIP, 150, 5);
+        Flower flower2 = new Flower(FlowerColor.WHITE, FlowerType.CHAMOMILE, 15, 20);
+        FlowerPack flowerPack = new FlowerPack(flower, 2);
+        FlowerPack flowerPack2 = new FlowerPack(flower2, 3);
+        flowerBucket.add(flowerPack);
+        flowerBucket.add(flowerPack2);
+        List<FlowerPack> packs = flowerBucket.getFlowerPacks();
+        Assertions.assertEquals(2, packs.size());
     }
 }

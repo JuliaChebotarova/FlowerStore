@@ -3,6 +3,8 @@
 import java.util.Random;
 
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,4 +34,13 @@ public class FlowerTest {
         flower.setColor(color);
         Assertions.assertEquals("#FF0000", flower.getColor());
     }
+
+    @Test
+    public void testColorNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            flower.setColor(null);
+        });
+        assertEquals("Color cannot be null", exception.getMessage());
+    }
+
 }

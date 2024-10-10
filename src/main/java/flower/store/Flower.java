@@ -1,11 +1,5 @@
 package flower.store;
 
-// import lombok.Getter;
-// import lombok.Setter;
-
-
-// @Getter
-// @Setter
 public class Flower {
     private double sepalLength;
     private FlowerColor color;
@@ -26,8 +20,6 @@ public class Flower {
         this.sepalLength = sepalLength;
     }
 
-
-    
     public String getColor() {
         return color.toString();
     }
